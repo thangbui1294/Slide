@@ -127,18 +127,22 @@ public class SlideList {
 			start = 1; 
 		}
 		boolean moved = jumpToPosition(start);
+		System.out.println("start : " +start);
 		if (moved){
-			displayCurrentSlide();
-			while ((cursor != null) && (start < end)){
-				cursor = cursor.getNext();
+			while ((cursor != null) && (start <= end)){
 				displayCurrentSlide();
+				cursor = cursor.getNext();
 				start++;
+				System.out.println("start : " +start);
 			}
 			if (cursor == null){
 				cursor = tail;
 			}
+			else cursor = cursor.getPrev();
+
 		}
 		else throw new IllegalArgumentException("Start position is beyond the list");
+		System.out.println("Hello");
 	}
 
 	/**
@@ -251,62 +255,5 @@ public class SlideList {
 			cursor = nodePtr;
 		}
 		return (nodePtr != null);
-	}
-
-
-
-
-
-
-	public static void main(String[] args){
-		try{
-			Slide slide1 = new Slide();
-			slide1.setText("Line 1-1", 1);
-			slide1.setText("Line 1-2", 2);
-			slide1.setText("Line 1-3", 3);
-			slide1.setText("Line 1-4", 4);
-			slide1.setText("Line 1-5", 5);
-
-			Slide slide2 = new Slide();
-			slide2.setText("Line 2-1", 1);
-			slide2.setText("Line 2-2", 2);
-			slide2.setText("Line 2-3", 3);
-			slide2.setText("Line 2-4", 4);
-			slide2.setText("Line 2-5", 5);
-
-			Slide slide3 = new Slide();
-			slide3.setText("Line 3-1", 1);
-			slide3.setText("Line 3-2", 2);
-			slide3.setText("Line 3-3", 3);
-			slide3.setText("Line 3-4", 4);
-			slide3.setText("Line 3-5", 5);
-
-			Slide slide4 = new Slide();
-			slide4.setText("Line 4-1", 1);
-			slide4.setText("Line 4-2", 2);
-			slide4.setText("Line 4-3", 3);
-			slide4.setText("Line 4-4", 4);
-			slide4.setText("Line 4-5", 5);
-
-			SlideList slideList1 = new SlideList();
-			slideList1.addAfterCurrent(slide1);
-			slideList1.addAfterCurrent(slide2);
-			slideList1.addAfterCurrent(slide3);
-			slideList1.addToEnd(slide4);
-			
-			System.out.println(slideList1.head.getSlide());
-			System.out.println(slideList1.tail.getSlide());
-			slideList1.displayCurrentSlide();
-			System.out.println(slideList1.head.getSlide());
-			System.out.println(slideList1.tail.getSlide());
-
-
-		}
-		catch (IllegalArgumentException ex){
-
-		}
-		catch (EmptyListException ex){
-
-	}
 	}
 }

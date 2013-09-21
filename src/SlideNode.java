@@ -76,48 +76,4 @@ public class SlideNode {
 	public SlideNode getPrev(){
 		return prev;
 	}
-	public static void main(String[] args){
-		Slide sl1 = new Slide();
-		Slide sl2 = new Slide();
-		Slide sl3 = new Slide();
-		try {
-		sl1.setText("Line 1-1" , 1);
-		sl1.setText("Line 1-2", 2);
-		sl1.setText("Line 1-3", 3);
-		sl1.setText("Line 1-5", 5);
-		sl1.setText("Line 1-4", 4);
-		
-		sl2.setText("Line 2-1" , 1);
-		sl2.setText("Line 2-2", 2);
-		sl2.setText("Line 2-3", 3);
-		sl2.setText("Line 2-5", 5);
-		sl2.setText("Line 2-4", 4);
-		
-		sl3.setText("Line 3-1" , 1);
-		sl3.setText("Line 3-2", 2);
-		sl3.setText("Line 3-3", 3);
-		sl3.setText("Line 3-5", 5);
-		sl3.setText("Line 3-4", 4);
-		
-		SlideNode sln1 = new SlideNode();
-		SlideNode sln2 = new SlideNode();
-		SlideNode sln3 = new SlideNode();
-		sln1.setSlide(sl1);
-		sln2.setSlide(sl2);
-		sln3.setSlide(sl3);
-		sln2.setNext(sln3);
-		sln2.setPrev(sln1);
-		System.out.println(sln2.getSlide());
-		System.out.println();
-		System.out.println(sln2.getNext().getSlide());
-		System.out.println();
-		System.out.println(sln2.getPrev().getSlide());
-		System.out.println();
-		
-		
-		}
-		catch (IllegalArgumentException ex){
-			System.out.println("Invalid range");
-		}
-	}
 }
